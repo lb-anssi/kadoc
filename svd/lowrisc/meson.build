@@ -1,6 +1,6 @@
 # SPDX-License-Identifier: Apache-2.0
 #
-# Copyright 2023 Ledger SAS
+# Copyright 2025 ANSSI
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,8 +14,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-svd_files = files()
+svd_files += files(
+    'opentitan_earlgrey.svd',
+)
 
-# Manufacturer subdir list in alpha order
-subdir('st')
-subdir('lowrisc')
+
+install_data(
+  svd_files,
+  install_dir :  get_option('datadir') + '/svd/lowrisc'
+)
